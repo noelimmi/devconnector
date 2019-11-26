@@ -1,0 +1,15 @@
+{
+  "name": "mern_social_media",
+  "version": "1.0.0",
+  "description": "a simple social media app using MERN",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "\u001b[3;2~\u001b[3;5~\u001b[3;3~https://github.com/noelimmi/dev-connect.git"
+  },
+  "author": "ImmanuelNoel",
+  "license": "ISC"
+}
