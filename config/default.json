@@ -1,3 +1,4 @@
 {
-    "mongoURI": "mongodb+srv://immi98:One2333@1968@devconnet-gzhfz.mongodb.net/test?retryWrites=true&w=majority"
+    "mongoURI": "mongodb+srv://immi98:One2333@1968@devconnet-gzhfz.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtSecret": "immi98"
 }
