@@ -1,4 +1,8 @@
 {
     "mongoURI": "mongodb+srv://immi98:One2333@1968@devconnet-gzhfz.mongodb.net/test?retryWrites=true&w=majority",
-    "jwtSecret": "immi98"
+    "jwtSecret": "immi98",
+    "github": {
+        "clientID": "555507faed741e83c09d",
+        "clientSecret": "c0e576b173180df51ab4b25d884bb18c70d6e64f"
+    }
 }

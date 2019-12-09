@@ -13,12 +13,12 @@ const config = require("config");
 router.get("/", auth, async (req, res) => {
 	try {
 		const user = await User.findById(req.user.id).select("-password");
+		console.log(user);
 		res.json(user);
 	} catch (error) {
 		console.error(error.message);
 		res.status(500).send("Server error");
 	}
-	res.send("auth route");
 });
 
 // @route  POST api/auth
@@ -54,21 +54,8 @@ router.post(
 					.json({ errors: [{ msg: "Invalid Credentials" }] });
 			}
 
-			const payload = {
-				user: {
-					id: user.id,
-				},
-			};
-
-			jwt.sign(
-				payload,
-				config.get("jwtSecret"),
-				{ expiresIn: 360000 },
-				(err, token) => {
-					if (err) throw err;
-					res.json({ token });
-				},
-			);
+			const token = user.generateAuthToken();
+			res.json({ token });
 		} catch (error) {
 			console.error(error.message);
 			res.status(500).send("Server error");
