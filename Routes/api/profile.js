@@ -127,12 +127,12 @@ router.get("/user/:user_id", async (req, res) => {
 		const profile = await Profile.findOne({
 			user: req.params.user_id,
 		}).populate("user", ["name", "avatar"]);
-		if (!profile) return res.status(400).json({ msg: "Profile Not Found." });
+		if (!profile) return res.status(404).json({ msg: "Profile Not Found." });
 		res.json(profile);
 	} catch (error) {
 		console.error(error);
 		if (error.kind == "ObjectId")
-			return res.status(400).json({
+			return res.status(404).json({
 				msg: "Profile Not Found.",
 			});
 		res.status(500).send("Server Error");
