@@ -2,9 +2,17 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import Moment from "react-moment";
 import { connect } from "react-redux";
-import { deleteEducation } from "../../actions/profile";
+import { showModal } from "../../actions/modal";
 
-const Education = ({ education, deleteEducation }) => {
+const Education = ({ education, showModal }) => {
+	const onClick = id => {
+		const resourceType = "education";
+		showModal(
+			`Are you sure? You want to delete this ${resourceType}.`,
+			resourceType,
+			id,
+		);
+	};
 	const educations = education.map(edu => (
 		<tr key={edu._id}>
 			<td>{edu.school}</td>
@@ -20,10 +28,10 @@ const Education = ({ education, deleteEducation }) => {
 			<td>
 				<button
 					onClick={() => {
-						deleteEducation(edu._id);
+						onClick(edu._id);
 					}}
 					className="btn btn-danger">
-					<i class="fa fa-trash"></i>
+					<i className="fa fa-trash"></i>
 				</button>
 			</td>
 		</tr>
@@ -48,7 +56,7 @@ const Education = ({ education, deleteEducation }) => {
 
 Education.propTypes = {
 	education: PropTypes.array.isRequired,
-	deleteEducation: PropTypes.func.isRequired,
+	showModal: PropTypes.func.isRequired,
 };
 
-export default connect(null, { deleteEducation })(Education);
+export default connect(null, { showModal })(Education);

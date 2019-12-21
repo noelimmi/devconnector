@@ -19,6 +19,9 @@ body {
 	line-height: 1.6;
 	background-color: #fff;
 	color: #333;
+	width: 100vw;
+	overflow-x: hidden;
+	position: relative;
 }
 
 a {
@@ -486,6 +489,24 @@ button {
 	color: #aaa;
 	font-size: 0.8rem;
 	margin-bottom: 0.5rem;
+}
+
+.modal-container {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1000000;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+	background-color: #fefefe;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 450px;
 }
 
 /* Mobile Styles */
