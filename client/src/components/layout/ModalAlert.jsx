@@ -39,11 +39,12 @@ const ModalAlert = ({
 	if (!isModalOpen) {
 		return null;
 	}
+	let getVisible = { display: "block" };
 	return (
-		<div className="modal-container">
+		<div className="modal-container" style={getVisible}>
 			<div className="modal">
-				<div className="modalContent">{modalContent}</div>
-				<div className="modalActions">
+				<div className="modalContent">
+					<p>{modalContent}</p>
 					<button className="btn btn-danger" onClick={() => onAction()}>
 						Yes
 					</button>

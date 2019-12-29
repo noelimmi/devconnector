@@ -26,7 +26,7 @@ const Dashboard = ({
 			null,
 		);
 	};
-	return loading && profile === null ? (
+	return loading ? (
 		<Spinner />
 	) : (
 		<Fragment>

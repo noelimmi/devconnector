@@ -77,14 +77,13 @@ router.post(
 			profileFields.skills = skills.split(",").map(skill => skill.trim());
 		}
 
-		//Social Array
+		//Social
 		profileFields.social = {};
 		if (youtube) profileFields.social.youtube = youtube;
 		if (twitter) profileFields.social.twitter = twitter;
 		if (facebook) profileFields.social.facebook = facebook;
 		if (linkedin) profileFields.social.linkedin = linkedin;
 		if (instagram) profileFields.social.instagram = instagram;
-
 		try {
 			let profile = await Profile.findOne({ user: req.user.id });
 			if (profile) {
@@ -99,6 +98,7 @@ router.post(
 			//Create
 			profile = new Profile(profileFields);
 			await profile.save();
+			console.log(profile);
 			res.json(profile);
 		} catch (error) {
 			console.error(error.message);
@@ -309,9 +309,10 @@ router.get("/github/:username", async (req, res) => {
 	try {
 		const url = `https://api.github.com/users/${
 			req.params.username
-		}/repos?per_page=5&sort=created:asc&client_id${config.get(
+		}/repos?per_page=5&sort=created:asc&client_id=${config.get(
 			"github.clientID",
 		)}&client_secret=${config.get("github.clientSecret")}`;
+
 		const repo = await axios({
 			method: "get",
 			url,
@@ -324,6 +325,8 @@ router.get("/github/:username", async (req, res) => {
 			return res.status(404).json({ error: "No repositary found" });
 		res.json(repo.data);
 	} catch (error) {
+		console.log(error.message);
+
 		if (error.response.status == 404)
 			return res.status(404).json({ error: "No github profile found" });
 		res.status(500).send("Server Error");

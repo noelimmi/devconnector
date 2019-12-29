@@ -34,6 +34,8 @@ export default function(state = initialState, action) {
 		case PROFILE_ERROR:
 			return {
 				...state,
+				profile: null,
+				repos: [],
 				error: payload,
 				loading: false,
 			};
@@ -42,7 +44,7 @@ export default function(state = initialState, action) {
 				...state,
 				profile: null,
 				repos: [],
-				loading: true,
+				loading: false,
 			};
 		case GET_REPOS:
 			return {

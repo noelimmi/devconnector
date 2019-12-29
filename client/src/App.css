@@ -19,9 +19,6 @@ body {
 	line-height: 1.6;
 	background-color: #fff;
 	color: #333;
-	width: 100vw;
-	overflow-x: hidden;
-	position: relative;
 }
 
 a {
@@ -492,21 +489,31 @@ button {
 }
 
 .modal-container {
-	width: 100vw;
-	height: 100vh;
-	position: absolute;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	z-index: 1000000;
-	background: rgba(0, 0, 0, 0.5);
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	padding-top: 100px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.7);
 }
 
 .modal {
 	background-color: #fefefe;
+	margin: 15% auto; /* 15% from the top and centered */
 	padding: 20px;
 	border: 1px solid #888;
 	width: 450px;
+}
+
+.modalContent {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 /* Mobile Styles */

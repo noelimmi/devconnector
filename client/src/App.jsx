@@ -8,17 +8,19 @@ import Alert from "./components/layout/Alert";
 import ModelAlert from "./components/layout/ModalAlert";
 import Dashboard from "./components/dashboard/Dashboard";
 import CreateProfile from "./components/profile-form/CreateProfile";
-import Profiles from "./components/profiles/Profiles";
 import EditProfile from "./components/profile-form/EditProfile";
 import AddExperience from "./components/profile-form/AddExperience";
 import AddEducation from "./components/profile-form/AddEducation";
-import setAuthToken from "./utils/setAuthToken";
+import Profiles from "./components/profiles/Profiles";
+import Profile from "./components/profile/Profile";
+
 import PrivateRoute from "./components/routing/PrivateRoute.jsx";
 // Redux
 import { Provider } from "react-redux";
 import store from "./store";
 import { loadUser } from "./actions/auth";
 
+import setAuthToken from "./utils/setAuthToken";
 //load CSS
 import "./App.css";
 
@@ -42,6 +44,7 @@ const App = () => {
 							<Route exact path="/register" component={Register} />
 							<Route exact path="/login" component={Login} />
 							<Route exact path="/profiles" component={Profiles} />
+							<Route exact path="/profile/:id" component={Profile} />
 							<PrivateRoute exact path="/dashboard" component={Dashboard} />
 							<PrivateRoute
 								exact
