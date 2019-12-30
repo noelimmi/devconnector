@@ -2,11 +2,11 @@ const express = require("express");
 const axios = require("axios");
 const config = require("config");
 const router = express.Router();
-const auth = require("../../middleware/auth");
+const auth = require("../middleware/auth");
 const { check, validationResult } = require("express-validator");
-const User = require("../../models/User");
-const Profile = require("../../models/Profile");
-const Post = require("../../models/Post");
+const User = require("../models/User");
+const Profile = require("../models/Profile");
+const Post = require("../models/Post");
 
 // @route  GET api/profile/me
 // @desc   Get logged In user profile

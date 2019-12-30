@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const { check, validationResult } = require("express-validator");
 const gravatar = require("gravatar");
-const User = require("../../models/User");
+const User = require("../models/User");
 
 // @route  POST api/user
 // @desc   Resgister user

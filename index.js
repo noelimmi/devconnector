@@ -1,6 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
-const initDb = require("../config/db");
+const initDb = require("./config/db");
 const path = require("path");
 
 const app = express();
