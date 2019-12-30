@@ -6,6 +6,7 @@ import {
 	deleteEducation,
 	deleteAccount,
 } from "../../actions/profile";
+import { deletePost, deleteComment } from "../../actions/post";
 import { connect } from "react-redux";
 
 const ModalAlert = ({
@@ -17,6 +18,8 @@ const ModalAlert = ({
 	deleteAccount,
 	deleteEducation,
 	deleteExperience,
+	deletePost,
+	deleteComment,
 }) => {
 	const onAction = () => {
 		switch (resourceType) {
@@ -30,6 +33,14 @@ const ModalAlert = ({
 			}
 			case "account": {
 				deleteAccount();
+				break;
+			}
+			case "post": {
+				deletePost(resourceId);
+				break;
+			}
+			case "comment": {
+				deleteComment(resourceId.postId, resourceId.commentId);
 				break;
 			}
 			default:
@@ -62,10 +73,12 @@ ModalAlert.propTypes = {
 	deleteEducation: PropTypes.func.isRequired,
 	deleteExperience: PropTypes.func.isRequired,
 	deleteAccount: PropTypes.func.isRequired,
+	deletePost: PropTypes.func.isRequired,
+	deleteComment: PropTypes.func.isRequired,
 	isModalOpen: PropTypes.bool.isRequired,
 	modalContent: PropTypes.string,
 	resourceType: PropTypes.string,
-	resourceId: PropTypes.string,
+	resourceId: PropTypes.any,
 };
 
 const mapStateToProps = state => ({
@@ -77,6 +90,8 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, {
 	closeModal,
+	deleteComment,
+	deletePost,
 	deleteExperience,
 	deleteEducation,
 	deleteAccount,

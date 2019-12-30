@@ -70,7 +70,9 @@ router.post(
 		if (company) profileFields.company = company;
 		if (website) profileFields.website = website;
 		if (location) profileFields.location = location;
-		if (bio) profileFields.bio = location;
+		if (bio) {
+			profileFields.bio = bio;
+		}
 		if (status) profileFields.status = status;
 		if (githubusername) profileFields.githubusername = githubusername;
 		if (skills) {
@@ -84,6 +86,7 @@ router.post(
 		if (facebook) profileFields.social.facebook = facebook;
 		if (linkedin) profileFields.social.linkedin = linkedin;
 		if (instagram) profileFields.social.instagram = instagram;
+
 		try {
 			let profile = await Profile.findOne({ user: req.user.id });
 			if (profile) {

@@ -9,6 +9,7 @@ const EditProfile = ({
 	createProfile,
 	getCurrentProfile,
 	history,
+	isEdit,
 }) => {
 	const [formData, setFormData] = useState({
 		company: "",
@@ -28,21 +29,44 @@ const EditProfile = ({
 	const [displaySocialInputs, toggleSocialInputs] = useState(false);
 	useEffect(() => {
 		getCurrentProfile();
-		setFormData({
-			company: loading || !profile.company ? "" : profile.company,
-			website: loading || !profile.website ? "" : profile.website,
-			location: loading || !profile.location ? "" : profile.location,
-			status: loading || !profile.status ? "" : profile.status,
-			skills: loading || !profile.skills ? "" : profile.skills.join(","),
-			githubusername:
-				loading || !profile.githubusername ? "" : profile.githubusername,
-			bio: loading || !profile.bio ? "" : profile.bio,
-			twitter: loading || !profile.twitter ? "" : profile.twitter,
-			facebook: loading || !profile.facebook ? "" : profile.facebook,
-			linkedin: loading || !profile.linkedin ? "" : profile.linkedin,
-			youtube: loading || !profile.youtube ? "" : profile.youtube,
-			instagram: loading || !profile.instagram ? "" : profile.instagram,
-		});
+		if (!loading && profile.social) {
+			setFormData({
+				company: loading || !profile.company ? "" : profile.company,
+				website: loading || !profile.website ? "" : profile.website,
+				location: loading || !profile.location ? "" : profile.location,
+				status: loading || !profile.status ? "" : profile.status,
+				skills: loading || !profile.skills ? "" : profile.skills.join(","),
+				githubusername:
+					loading || !profile.githubusername ? "" : profile.githubusername,
+				bio: loading || !profile.bio ? "" : profile.bio,
+				twitter:
+					loading || !profile.social.twitter ? "" : profile.social.twitter,
+				facebook:
+					loading || !profile.social.facebook ? "" : profile.social.facebook,
+				linkedin:
+					loading || !profile.social.linkedin ? "" : profile.social.linkedin,
+				youtube:
+					loading || !profile.social.youtube ? "" : profile.social.youtube,
+				instagram:
+					loading || !profile.social.instagram ? "" : profile.social.instagram,
+			});
+		} else {
+			setFormData({
+				company: loading || !profile.company ? "" : profile.company,
+				website: loading || !profile.website ? "" : profile.website,
+				location: loading || !profile.location ? "" : profile.location,
+				status: loading || !profile.status ? "" : profile.status,
+				skills: loading || !profile.skills ? "" : profile.skills.join(","),
+				githubusername:
+					loading || !profile.githubusername ? "" : profile.githubusername,
+				bio: loading || !profile.bio ? "" : profile.bio,
+				twitter: "",
+				facebook: "",
+				linkedin: "",
+				youtube: "",
+				instagram: "",
+			});
+		}
 	}, [loading, getCurrentProfile]);
 
 	const {
