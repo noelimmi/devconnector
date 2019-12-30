@@ -23,7 +23,9 @@ const CommentForm = ({ addComment, postId }) => {
 					cols="30"
 					rows="3"
 					placeholder="Leave a Comment here..."
-					required></textarea>
+					required
+					value={text}
+				/>
 				<input type="submit" className="btn btn-dark my-1" value="Submit" />
 			</form>
 		</div>

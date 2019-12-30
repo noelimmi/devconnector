@@ -23,7 +23,9 @@ const PostForm = ({ addPost }) => {
 					cols="30"
 					rows="10"
 					placeholder="Create a post here..."
-					required></textarea>
+					required
+					value={text}
+				/>
 				<input type="submit" className="btn btn-dark my-1" value="Submit" />
 			</form>
 		</div>
